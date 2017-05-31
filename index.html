@@ -3,8 +3,10 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Hangman</title>
+  <title>Sports Hangman</title>
 
+ <!--  /*title font*/ -->
+  <link href="https://fonts.googleapis.com/css?family=Diplomata" rel="stylesheet">
   <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!-- Optional theme -->
@@ -13,51 +15,111 @@
   <link rel="stylesheet" type="text/css" href="assets/style.css">
   
   <style>
+
+h1 {
+  font-family: 'Diplomata', cursive;
+}
  /* <!-- background image -->*/
  body {
   background-image: url("https://github.com/ezharandall/Hangman-Game/blob/master/assets/images/background.jpg?raw=true");
   text-align: center;
+  border: 2px solid black;
+
+
    }
-ul{ 
+
+ul { 
   list-style-type: none; 
-};
-
+  display:inline;
 }
+
+
 .wrapper {
-  border: 2px solid black;
+  border: 1px solid black;
+ /* margin: 20px 0px 20px 0px;*/
+  padding: 20px 0px 20px 0px;
   text-align: center;
-}
-.buttons {
-  border: 2px solid black;
-}
-
-
-
-
-
-
-
-
-
-
   
+}
+
+#buttons {
+  display:inline;
+}
+/*#hold {
+  
+}*/
+
+/*.alphabet {
+  float: left;
+}
+*/
+
+/*.btn-secondary {
+  border: 1px solid black;
+  margin: 2px 2px 2px 2px;
+  padding: 2px 2px 2px 2px;
+  text-align: center;
+}*/
+
+
 </style>
 </head>
 
 <body>
 
 <div class="wrapper">
-   <h1>Hangman</h1>    
+   <h1>Sports Hangman</h1>    
     <p>Use the alphabet below to guess the word. </p>
 </div>
-  
+
+
 <div class="wrapper">
+
     <div id="buttons">
-    </div>  
-    <p id="catagoryName"></p>
+    <a><img src="https://github.com/ezharandall/Hangman-Game/blob/master/assets/images/nfl_logo.jpg?raw=true" height="360px" width="360px" align="left" ></a>
+
+    <a><img src="https://github.com/ezharandall/Hangman-Game/blob/master/assets/images/nba_logo.jpg?raw=true" height="360px" width="360px" align="right" ></a>
+
+    
+      
+    <!--  < --><!-- div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  
+    <button type="button" class="btn-secondary">A</button>
+    <button type="button" class="btn-secondary">B</button>
+    <button type="button" class="btn-secondary">C</button>
+    <button type="button" class="btn-secondary">D</button>
+    <button type="button" class="btn-secondary">E</button>
+    <button type="button" class="btn-secondary">F</button>
+    <button type="button" class="btn-secondary">G</button>
+    <button type="button" class="btn-secondary">H</button>
+    <button type="button" class="btn-secondary">I</button>
+    <button type="button" class="btn-secondary">J</button>
+    <button type="button" class="btn-secondary">K</button>
+    <button type="button" class="btn-secondary">L</button>
+    <button type="button" class="btn-secondary">M</button>
+    <button type="button" class="btn-secondary">N</button>
+    <button type="button" class="btn-secondary">O</button>
+    <button type="button" class="btn-secondary">P</button>
+    <button type="button" class="btn-secondary">Q</button>
+    <button type="button" class="btn-secondary">R</button>
+    <button type="button" class="btn-secondary">S</button>
+    <button type="button" class="btn-secondary">T</button>
+    <button type="button" class="btn-secondary">U</button>
+    <button type="button" class="btn-secondary">V</button>
+    <button type="button" class="btn-secondary">W</button>
+    <button type="button" class="btn-secondary">X</button>
+    <button type="button" class="btn-secondary">Y</button>
+    <button type="button" class="btn-secondary">Z</button>
+  </div> -->
+ </div>
+</div>
+    <p id="categoryName"></p>
     <div id="hold">
+    <a><img src="https://github.com/ezharandall/Hangman-Game/blob/master/assets/images/fball-bball.jpg?raw=true" height="200px" width="200px" align="right" ></a>
     </div>
     <p id="mylives"></p>
+
+
     <!-- <p id="clue">Clue -</p>  
      <canvas id="stickman">This Text will show if the Browser does NOT support HTML5 Canvas tag</canvas>
     <div class="container">
@@ -68,14 +130,16 @@ ul{
 <script type="text/javascript">
 
 
+
 window.onload = function () {
+
 
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
   
   var categories;         // Array of topics
-  var chosenCategory;     // Selected catagory
+  var chosenCategory;     // Selected category
   // var getHint ;          // Word getHint
   var word ;              // Selected word
   var guess ;             // Guess
@@ -86,7 +150,7 @@ window.onload = function () {
 
   // Get elements
   var showLives = document.getElementById("mylives");
-  var showCatagory = document.getElementById("scatagory");
+  var showCategory = document.getElementById("scategory");
   var getHint = document.getElementById("hint");
   // var showClue = document.getElementById("clue");
 
@@ -96,8 +160,8 @@ window.onload = function () {
 
 
   var buttons = function () {
-    myButtons = document.getElementById('buttons');
-    letters = document.createElement('ul');
+    var myButtons = document.getElementById('buttons');
+    var letters = document.createElement('ul');
 
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
@@ -109,16 +173,18 @@ window.onload = function () {
       letters.appendChild(list);
     }
   }
+
+
     
   
-  // Select Catagory
+  // Select Category
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
-      catagoryName.innerHTML = "The Category: NBA Teams";
-    } else if (chosenCategory === categories[1]) {
-      catagoryName.innerHTML = "The Category: NFL Teams";
+      categoryName.innerHTML = "The Category: NBA Teams";
+    } else if (chosenCategory === categeries[1]) {
+      categoryName.innerHTML = "The Category: NFL Teams";
     } else if (chosenCategory === categories[2]) {
-      catagoryName.innerHTML = "The Category: MLB Teams";
+      categoryName.innerHTML = "The Category: MLB Teams";
     }
   }
 
@@ -216,9 +282,9 @@ window.onload = function () {
     hint.onclick = function() {
 
     //  
-    var catagoryIndex = categories.indexOf(chosenCategory);
+    var categoryIndex = categories.indexOf(chosenCategory);
     var hintIndex = chosenCategory.indexOf(word);
-    // showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
+    // showClue.innerHTML = "Clue: - " +  hints [categoryIndex][hintIndex];
   };
 
    // Reset
